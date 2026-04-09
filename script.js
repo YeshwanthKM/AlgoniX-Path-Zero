@@ -39,6 +39,9 @@ btnLaunchGame.addEventListener('click', () => {
     homeScreen.style.opacity = '0';
     setTimeout(() => {
         homeScreen.style.display = 'none';
+        // Show game container
+        const appContainer = document.querySelector('.app-container');
+        if (appContainer) appContainer.style.display = 'flex';
         // Trigger initial generation
         generateBtn.click();
     }, 500);
@@ -49,6 +52,10 @@ exitBtn.addEventListener('click', () => {
     // Reset state & stop animations
     isRaceActive = false;
     clearTimeout(aiAnimationId);
+    
+    // Hide game container
+    const appContainer = document.querySelector('.app-container');
+    if (appContainer) appContainer.style.display = 'none';
     
     // Show home screen
     if (homeScreen) {

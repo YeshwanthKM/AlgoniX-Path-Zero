@@ -28,7 +28,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 2000;
+    z-index: 3000; /* Higher than header (2100) */
     transition: opacity 0.5s ease;
 }
 
@@ -113,7 +113,7 @@ body {
 .app-container {
     width: 95%;
     max-width: 1200px;
-    display: flex;
+    display: none; /* Hidden by default, shown by script.js */
     flex-direction: column;
     gap: 20px;
 }

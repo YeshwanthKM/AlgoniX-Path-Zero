@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEON MAZE RACE: AI vs Human</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="header">
+            <div class="title-container">
+                <h1 class="glow-text">MAZE RACE</h1>
+                <p class="subtitle">Can you beat the AI Algorithm?</p>
+            </div>
+            <div class="controls">
+                <select id="difficultySelect" class="btn difficulty-select" style="background: rgba(31, 33, 40, 0.6); color: #fff; border: 1px solid var(--border-color); outline: none;">
+                    <option value="10" style="color: #000;">Easy</option>
+                    <option value="20" style="color: #000;">Medium</option>
+                    <option value="25" style="color: #000;">Hard</option>
+                </select>
+                <button id="generateBtn" class="btn primary">Generate Maze</button>
+                <button id="startRaceBtn" class="btn secondary" disabled>Start Race</button>
+            </div>
+            <div class="status-panel">
+                <p id="statusMessage">Click 'Generate Maze' to create a new layout!</p>
+            </div>
+        </header>
+
+        <main class="split-screen">
+            <!-- AI Panel -->
+            <section class="panel ai-panel">
+                <div class="panel-header">
+                    <h2>AI BOT</h2>
+                    <span class="badge ai-badge">Pathfinder: AI</span>
+                </div>
+                <div class="canvas-container">
+                    <canvas id="aiCanvas" width="400" height="400"></canvas>
+                </div>
+                <div class="stats">
+                    <p>Calculated Shortest Path: <span id="aiSteps" class="highlight">0</span> steps</p>
+                </div>
+            </section>
+
+            <!-- Divider -->
+            <div class="divider"></div>
+
+            <!-- Human Panel -->
+            <section class="panel human-panel">
+                <div class="panel-header">
+                    <h2>HUMAN</h2>
+                    <span class="badge human-badge">You</span>
+                </div>
+                <div class="canvas-container">
+                    <canvas id="humanCanvas" width="400" height="400"></canvas>
+                    <div id="humanOverlay" class="canvas-overlay">Waiting for Race to Start...</div>
+                </div>
+                <div class="stats">
+                    <p>Your Steps Taken: <span id="humanSteps" class="highlight">0</span> steps</p>
+                </div>
+                <div class="instructions">
+                    <p>Use <kbd>↑</kbd> <kbd>↓</kbd> <kbd>←</kbd> <kbd>→</kbd> or <kbd>W</kbd> <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd></p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modals -->
+    <div id="resultsModal" class="modal hidden">
+        <div class="modal-content glass-effect">
+            <h2 id="resultTitle">RACE FINISHED!</h2>
+            <div class="result-stats">
+                <p>AI Optimal Steps: <span id="finalAiSteps">0</span></p>
+                <p>Your Steps: <span id="finalHumanSteps">0</span></p>
+            </div>
+            <p id="resultComment" class="result-comment"></p>
+            <div style="display: flex; gap: 10px; justify-content: center;">
+                <button id="reviewBoardBtn" class="btn secondary">Review Paths</button>
+                <button id="playAgainBtn" class="btn primary">Play Again</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

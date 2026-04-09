@@ -33,6 +33,7 @@ const playAgainBtn = document.getElementById('playAgainBtn');
 const reviewBoardBtn = document.getElementById('reviewBoardBtn');
 const homeScreen = document.getElementById('home-screen');
 const btnLaunchGame = document.getElementById('btn-launch-game');
+const exitBtn = document.getElementById('exitBtn');
 
 btnLaunchGame.addEventListener('click', () => {
     homeScreen.style.opacity = '0';
@@ -41,6 +42,18 @@ btnLaunchGame.addEventListener('click', () => {
         // Trigger initial generation
         generateBtn.click();
     }, 500);
+});
+
+exitBtn.addEventListener('click', () => {
+    // Reset state & stop animations
+    isRaceActive = false;
+    clearTimeout(aiAnimationId);
+    
+    // Show home screen
+    homeScreen.style.display = 'flex';
+    setTimeout(() => {
+        homeScreen.style.opacity = '1';
+    }, 10);
 });
 
 class Cell {
